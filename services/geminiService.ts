@@ -1,20 +1,9 @@
 
 import { GoogleGenAI, Modality, GenerateContentResponse } from "@google/genai";
 
-// ######################################################################
-// ## QUAN TRỌNG: DÁN API KEY CỦA BẠN VÀO ĐÂY ##
-// ######################################################################
-// Vui lòng thay thế chuỗi "YOUR_API_KEY_HERE" bằng Google AI API Key thật của bạn.
-// CẢNH BÁO: Việc để lộ API key trong mã nguồn phía máy khách là không an toàn cho các ứng dụng công khai.
-// Bất kỳ ai cũng có thể xem và sử dụng key của bạn. Chỉ sử dụng cách này cho mục đích thử nghiệm cá nhân.
-const API_KEY = "YOUR_API_KEY_HERE"; 
-// ######################################################################
-
-if (API_KEY === "YOUR_API_KEY_HERE") {
-  throw new Error("Vui lòng thay thế 'YOUR_API_KEY_HERE' bằng API key của bạn trong file services/geminiService.ts");
-}
-
-const ai = new GoogleGenAI({ apiKey: API_KEY });
+// The API key is securely managed by the environment and passed via process.env.API_KEY.
+// As per the guidelines, we must assume process.env.API_KEY is available.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 /**
  * Chuyển đổi một chuỗi URL dữ liệu thành đối tượng Part cho API Gemini.
